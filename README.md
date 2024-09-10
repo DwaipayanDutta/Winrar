@@ -1,2 +1,19 @@
 # Winrar
 Winrar keymaker
+
+
+Sample key 
+Copy below this and save it in where win rar is installed as rarreg.key for example in C:\Program Files\WinRAR :
+
+RAR registration data
+User
+100 PC usage license
+UID=71386fe49139860c9b39
+64122122509b39d7a07c92e95d0cc3def23770cb5f9a5f9a6bd1f6
+0e434177e80bbcda24286007e697024c155e27713a0f6ced4231f1
+bdd814b379ce793dea8dc738ed6feab43e470752e4be6223bc1505
+ef939613fad2a789a4e17319eb43d7f8b260653bd6229e3cb62cef
+9a6b32bf153ae4ded0c32f815bf5fabc83b8e6f80da0b7b4524674
+44e01c14f62da85708f329fa419956dcb1e1afe3e65a589060b1e4
+184e1f1eb471c0f6c10c89542ad16ce02e0c577916160520875389
+
