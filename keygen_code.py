@@ -24,10 +24,6 @@ def generate_keypair():
     pub_key = priv_key.get_verifying_key()
     return priv_key, pub_key
 
-def int_to_bytes(x, length):
-    """Convert an integer to bytes with specified length."""
-    return x.to_bytes(length, byteorder='big')
-
 def sign_message(priv_key, message):
     """Sign a message with the private key."""
     return priv_key.sign(message)
@@ -48,6 +44,7 @@ def generate_rarreg_key(username, license_type):
     uid = temp_pub_key_hex + data0_pub_key_hex
     uid_hash = sha1(uid.encode())
     uid_signature = sign_message(priv_key_u, uid_hash)
+    
     r_uid = int.from_bytes(uid_signature[:32], 'big')
     s_uid = int.from_bytes(uid_signature[32:], 'big')
     
@@ -60,6 +57,7 @@ def generate_rarreg_key(username, license_type):
     temp = temp_pub_key_hex + data0_pub_key_hex + r_uid_hex + s_uid_hex
     temp_hash = sha1(temp.encode())
     temp_signature = sign_message(priv_key_u, temp_hash)
+    
     r_temp = int.from_bytes(temp_signature[:32], 'big')
     s_temp = int.from_bytes(temp_signature[32:], 'big')
     
@@ -82,10 +80,11 @@ def generate_rarreg_key(username, license_type):
     
     # Format Output
     header = "RAR registration data"
-    result = f"{header}\n{username}\n{license_type}\nUID:{temp_pub_key_hex}\nData: {data}\n"
+    result = f"{header}\n{username}\n{license_type}\nUID={temp_pub_key_hex}\n"
     
-    # Ensure the final result is exactly 462 characters long
-    result = result.ljust(462)[:462]  # Pad or truncate to ensure exact length
+    # Split data into lines of 54 characters
+    for i in range(0, len(data), 54):
+        result += data[i:i + 54] + "\n"
     
     # Save to file
     file_name = "rarreg.key"
@@ -97,6 +96,6 @@ def generate_rarreg_key(username, license_type):
     print(f"RAR registration key generated and saved as '{full_path}'.")
 
 # Example usage
-username = "user_example"
-license_type = "full"
+username = "User"  # Example username
+license_type = "Single PC usage license"  # Example license type
 generate_rarreg_key(username, license_type)
