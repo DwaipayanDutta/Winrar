@@ -8,3 +8,9 @@ C:\Program Files\WinRAR
 Alternative Location:
 You can also save the key file in the following directory:\
 %APPDATA%\WinRAR
+
+# Default usage
+.\RARKeyGenerator.ps1
+
+# Custom parameters
+.\RARKeyGenerator.ps1 -Username "John Doe" -LicenseType "Multi PC license" -OutputDir "C:\Keys"
